@@ -7,7 +7,7 @@ Go through the steps below.
 1\. Clone this repository
 
 ```sh
-git clone git@github.com:ClipboardHealth/clipboard-health.git
+git clone git@github.com:rahulm2/practice-nearby-app.git
 ```
 
 
