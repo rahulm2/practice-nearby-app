@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  findUsers(radius: Int!): [User!]!
+  getUsers(limit: Int! = 1000000, offset: Int! = 0): [User!]!
+}
+
+type User {
+  firstName: String
+  gender: String
+  id: Int!
+  lastName: String
+  location: UserTracking
+}
+
+type UserTracking {
+  lat: Float!
+  lng: Float!
+}
