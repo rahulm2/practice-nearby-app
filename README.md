@@ -23,18 +23,18 @@ npm i
 npm run infra:up
 ```
 
-4. Run Prisma migrations
+4\. Run Prisma migrations
 
 ```sh
 npx prisma migrate dev --name init
 npx prisma db seed
 
 ```
-5. Application Graphql endpoint
+5\. Application Graphql endpoint
 
 http://localhost:3000/graphql
 
-6. Hasure endpoint
+6\. Hasure endpoint
 
 http://localhost:8080, password- myadminsecretkey
 
