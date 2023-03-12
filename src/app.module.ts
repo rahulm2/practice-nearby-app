@@ -18,7 +18,6 @@ import { ContextLoggerModule } from "./context-logger/context-logger.module";
       context: ({ req }) => ({ headers: req.headers }),
       formatError: (error: GraphQLError) => {
         const { exception } = error?.extensions || ({} as any);
-        console.log(JSON.stringify(error));
         const graphQLFormattedError = {
           message:
             exception?.response?.message ||

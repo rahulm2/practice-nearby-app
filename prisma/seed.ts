@@ -39,7 +39,6 @@ async function main() {
       userTracking: { lat: 61.065, lng: -86.333 },
     },
   ];
-  console.log(seedUsers);
   await prisma.user.createMany({
     data: seedUsers.map(({ firstName, lastName, gender }, index) => ({
       id: index + 1,
