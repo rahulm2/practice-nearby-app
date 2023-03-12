@@ -30,7 +30,21 @@ npx prisma migrate dev --name init
 npx prisma db seed
 
 ```
+5. Application Graphql endpoint
 
+http://localhost:3000/graphql
+
+6. Hasure endpoint
+
+http://localhost:8080, password- myadminsecretkey
+
+7. Access token login  request
+
+POST http://localhost:3000/auth/login
+Payload- {
+"username": "admin",
+"password": "admin"
+}
 
 ## Testing
 
