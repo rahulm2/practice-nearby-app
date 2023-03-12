@@ -38,7 +38,7 @@ http://localhost:3000/graphql
 
 http://localhost:8080, password- myadminsecretkey
 
-7. Access token login  request
+7\. Access token login  request
 
 POST http://localhost:3000/auth/login
 Payload- {
