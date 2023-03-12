@@ -11,9 +11,6 @@ export class UserRepository {
     return await this.prisma.user.findMany({
       skip: getUsersDto.offset,
       take: getUsersDto.limit,
-      // include: {
-      //   userTracking: true,
-      // },
     });
   }
 

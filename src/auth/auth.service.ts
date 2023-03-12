@@ -6,9 +6,13 @@ export class AuthService {
   constructor(private jwtService: JwtService) {}
 
   async login(user: any) {
-    const payload = { username: user.username, password: user.password };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign({
+        "https://hasura.io/jwt/claims": {
+          "x-hasura-default-role": "user",
+          "x-hasura-allowed-roles": ["user", "admin"],
+        },
+      }),
     };
   }
 }

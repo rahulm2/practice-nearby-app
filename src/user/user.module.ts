@@ -3,6 +3,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { AuthModule } from "src/auth/auth.module";
 import { ContextLoggerModule } from "src/context-logger/context-logger.module";
 import { PrismaModule } from "src/prisma/prisma.module";
+import { UserController } from "./user.controller";
 import { UserRepository } from "./user.repository";
 import { UserResolver } from "./user.resolver";
 import { UserService } from "./user.service";
@@ -17,5 +18,6 @@ import { UserService } from "./user.service";
     ContextLoggerModule,
   ],
   providers: [UserRepository, UserService, UserResolver],
+  controllers: [UserController],
 })
 export class UserModule {}
