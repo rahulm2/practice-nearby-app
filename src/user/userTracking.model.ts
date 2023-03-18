@@ -1,10 +1,4 @@
-import { Field, ObjectType, Float } from "@nestjs/graphql";
-
-@ObjectType()
-export class UserTracking {
-  @Field((type) => Float)
+export interface UserTracking {
   lat: number;
-
-  @Field((type) => Float)
   lng: number;
 }
