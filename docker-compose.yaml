@@ -15,11 +15,14 @@ services:
     depends_on:
       - 'postgres'
     restart: always
+    volumes:
+      - ./hasura-metadata:/hasura-metadata
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgresql://nearby-service:postgres@postgres/nearby-service
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
       HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256", "key": "myadminsecretkey-nearby-service-practice-hasura"}'
+      HASURA_GRAPHQL_METADATA_DIR: "/hasura-metadata"
   app:
     build: .
     depends_on:

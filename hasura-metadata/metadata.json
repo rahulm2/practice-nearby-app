@@ -1,0 +1,138 @@
+{
+  "resource_version": 20,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "User",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "UserTrackings",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "userId",
+                    "table": {
+                      "name": "UserTracking",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "user",
+                "permission": {
+                  "columns": [
+                    "id",
+                    "firstName",
+                    "gender",
+                    "lastName"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "UserTracking",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "User",
+                "using": {
+                  "foreign_key_constraint_on": "userId"
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "user",
+                "permission": {
+                  "columns": [
+                    "lat",
+                    "lng",
+                    "id",
+                    "userId"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "pool_settings": {
+              "connection_lifetime": 600,
+              "idle_timeout": 180,
+              "max_connections": 50,
+              "retries": 1
+            },
+            "use_prepared_statements": true
+          }
+        }
+      }
+    ],
+    "actions": [
+      {
+        "name": "getUsersByDistance",
+        "definition": {
+          "handler": "http://app:3000/user/distance",
+          "output_type": "SampleOutput",
+          "arguments": [
+            {
+              "name": "radius",
+              "type": "Int!"
+            }
+          ],
+          "type": "query"
+        },
+        "permissions": [
+          {
+            "role": "user"
+          }
+        ]
+      }
+    ],
+    "custom_types": {
+      "input_objects": [
+        {
+          "name": "SampleInput",
+          "fields": [
+            {
+              "name": "radius",
+              "type": "Int!"
+            }
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "SampleOutput",
+          "fields": [
+            {
+              "name": "result",
+              "type": "String!"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
